@@ -1,0 +1,228 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    background: linear-gradient(135deg, #A1ACBD 25%, #5FB2FF 25%,#5FB2FF 50%, #3D4856 50%, #3D4856 75%,#BC567E 75%);
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+::selection {
+    background: #BC567E;
+    color: white;
+}
+
+.logo-box {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 24px;
+    color: #3D4856;
+    border: 2px solid #3D4856;
+    padding: 10px;
+    box-shadow: 0 3px 6px 0 rgb(0 0 0 / 4%);
+}
+
+.logo-clock {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: -10px;
+    width: 18px;
+    height: 18px;
+    background: #3D4856;
+    border-radius: 50%;
+}
+
+.logo-clock::before, /* Logo: Zeiger */
+.logo-clock::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    background: #A1ACBD;
+}
+
+.logo-clock::before { /* Logo: Großer Zeiger */
+    height: 70%;
+    width: 2px;
+    bottom: 46%;
+    transform: translate(-50%);
+    z-index: 19;
+}
+
+.logo-clock::after { /* Logo: kleiner Zeiger */
+    height: 33%;
+    width: 1px;
+    bottom: 50%;
+    transform: translate(-50%,3.5%) rotate(-60deg);
+    transform-origin: bottom;
+    z-index: 20;
+}
+
+.uhr {
+    position: relative;
+    width: 510px;
+    height: 510px;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: 13px solid #A1ACBD;
+    box-shadow: 3px 9px 24px 0 rgb(0 0 0 / 27%), 0 0 0 2px hsl(216, 18%, 58%);
+}
+
+.uhr .nummer {
+    position: absolute;
+    --rotation: 0;
+    transform: rotate(var(--rotation));
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 32px;
+    padding-top: 2.5px;
+    color: #3D4856;
+}
+
+/* nummer an Platz Verschieben */
+.uhr .nummer1 { --rotation: 30deg; }
+.uhr .nummer2 { --rotation: 60deg; }
+.uhr .nummer3 { --rotation: 90deg; }
+.uhr .nummer4 { --rotation: 120deg; }
+.uhr .nummer5 { --rotation: 150deg; }
+.uhr .nummer6 { --rotation: 180deg; }
+.uhr .nummer7 { --rotation: 210deg; }
+.uhr .nummer8 { --rotation: 240deg; }
+.uhr .nummer9 { --rotation: 270deg; }
+.uhr .nummer10 { --rotation: 300deg; }
+.uhr .nummer11 { --rotation: 330deg; }
+
+/* Nummer begradigen */
+.uhr .nummer1 div { transform: rotate(-30deg); }
+.uhr .nummer2 div { transform: rotate(-60deg); }
+.uhr .nummer3 div { transform: rotate(-90deg); }
+.uhr .nummer4 div { transform: rotate(-120deg); }
+.uhr .nummer5 div { transform: rotate(-150deg); }
+.uhr .nummer6 div { transform: rotate(-180deg); }
+.uhr .nummer7 div { transform: rotate(-210deg); }
+.uhr .nummer8 div { transform: rotate(-240deg); }
+.uhr .nummer9 div { transform: rotate(-270deg); }
+.uhr .nummer10 div { transform: rotate(-300deg); }
+.uhr .nummer11 div { transform: rotate(-330deg); }
+
+.uhr .zeiger {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    --rotation: 0;
+    transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+    transform-origin: bottom;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 10;
+    background: #3D4856;
+}
+
+.uhr .zeiger.stunden {
+    width: 10px;
+    height: 35%;
+}
+
+.uhr .zeiger.minuten {
+    width: 7px;
+    height: 40%;
+}
+
+.uhr .zeiger.sekunden {
+    width: 4px;
+    height: 45%;
+    background: #BC567E;
+}
+
+.uhr::after,
+.uhr::before { /* Kreise Uhrmitte */
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.uhr::after { /* Kreis Uhrmitte */
+    background-color: #3D4856;
+    z-index: 11;
+    width: 20px;
+    height: 20px;
+}
+
+.uhr::before { /* Metallniete Uhrmitte */
+    background: #A1ACBD;
+    z-index: 12;
+    width: 5px;
+    height: 5px;
+}
+
+@media(max-width: 1000px) {
+
+    .logo-box {
+        font-size: 22px;
+    }
+
+    .uhr {
+        width: 440px;
+        height: 440px;
+    }
+}
+
+@media(max-width: 700px) {
+
+    .logo-box {
+        top: 26px;
+        left: 26px;
+        font-size: 20px;
+    }
+
+    .uhr {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media(max-width: 520px) {
+
+    .logo-box {
+        font-size: 18px;
+    }
+
+    .uhr {
+        width: 370px;
+        height: 370px;
+    }
+}
+
+@media(max-width: 440px) {
+
+    .logo-box {
+        top: 24px;
+        left: 24px;
+        font-size: 16px;
+    }
+
+    .uhr {
+        width: 290px;
+        height: 290px;
+    }
+}
+
+.landscape-mobile {
+    width: 290px;
+    height: 290px;
+}
